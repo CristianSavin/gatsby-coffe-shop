@@ -3,8 +3,10 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import BackgroundSection from "../components/Global/BackgroundSection";
-import Info from '../components/Home/Info';
+import BackgroundSection from "../components/Global/BackgroundSection"
+import Info from '../components/Home/Info'
+import Menu from '../components/Home/Menu'
+
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -15,6 +17,7 @@ const IndexPage = ({ data }) => (
       styleClass="default-background"
     />
     <Info />
+    <Menu items={[...data.coffee.edges, ...data.juice.edges, ...data.tea.edges]} />
   </Layout>
 )
 
@@ -24,6 +27,60 @@ export const query = graphql`
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid_tracedSVG
+      }
+    }
+  },
+  coffee: allContentfulCoffeeItemExample {
+    edges {
+      node {
+        id
+        title
+        image {
+          fixed(width: 50, height: 50) {
+            ...GatsbyContentfulFixed_tracedSVG
+          }
+        }
+        price
+        description {
+          description
+        }
+        category
+      }
+    }
+  },
+  juice: allContentfulJuceItemExample {
+    edges {
+      node {
+        id
+        title
+        image {
+          fixed(width: 50, height: 50) {
+            ...GatsbyContentfulFixed_tracedSVG
+          }
+        }
+        price
+        description {
+          description
+        }
+        category
+      }
+    }
+  },
+  tea: allContentfulTeaItemExample {
+    edges {
+      node {
+        id
+        title
+        image {
+          fixed(width: 50, height: 50) {
+            ...GatsbyContentfulFixed_tracedSVG
+          }
+        }
+        price
+        description {
+          description
+        }
+        category
       }
     }
   }
