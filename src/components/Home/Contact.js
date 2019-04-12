@@ -45,7 +45,7 @@ export default class componentName extends Component {
   }
   render() {
     return (
-      <section className="contact py-5">
+      <section className="contact container py-5">
         <Title title="contact us" />
         <div className="row">
           <div className="col-10 col-sm-8 col-md-6 mx-auto">
